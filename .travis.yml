@@ -1,6 +1,10 @@
 language: java
 script:
-    - mvn clean install
+    - mvn clean
+    - mvn compile
+    - mvn assembly:single
+    - java -jar server.jar &
+    - mvn test
 deploy:
   provider: heroku
   api_key:

@@ -17,6 +17,7 @@ public class MirrorRequestServletTest {
     @Test
     public void doGet() throws IOException {
         MirrorRequestServlet ser = new MirrorRequestServlet();
+
         final int expectedCodeValue = 200;
         String address = "http://localhost:8080/mirror?key=po";
         URL url = new URL(address);
