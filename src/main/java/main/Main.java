@@ -13,10 +13,15 @@ public class Main {
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 
-        context.addServlet(new ServletHolder(mirrorRequestServlet), "/mirror");
-
-
-        Server server = new Server(8080);
+        context.addServlet(new ServletHolder(mirrorRequestServlet), "/*");
+        int port;
+        try {
+             port = Integer.parseInt(System.getenv("PORT"));
+        }
+        catch (NumberFormatException e){
+           port = 8080;
+        }
+        Server server = new Server(port);
         server.setHandler(context);
         server.start();
         server.join();
